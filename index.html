@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar Soto - Contratista</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #b03a2e; /* Fondo Rojo */
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0px 15px 25px rgba(0,0,0,0.5));
+        }
+
+        /* Estilo base para todos los botones */
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3em;
+            border-radius: 60px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transition: 0.3s;
+            width: 280px;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+        }
+
+        /* Botón WhatsApp */
+        .btn-whatsapp {
+            background-color: #25d366;
+            margin-top: 25px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+        }
+
+        /* Botón TikTok */
+        .btn-tiktok {
+            background-color: #000000;
+            margin-top: 15px;
+        }
+
+        .btn-tiktok:hover {
+            background-color: #333333;
+        }
+
+        /* Botón Instagram */
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            margin-top: 15px;
+        }
+
+        .btn-instagram:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Texto de aviso */
+        .aviso-contacto {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .footer-text {
+            color: white;
+            margin-top: 25px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Canvas de la casa con la información -->
+    <canvas id="canvasCasa" width="700" height="850"></canvas>
+
+    <br>
+    
+    <!-- 1. Botón de WhatsApp -->
+    <a href="https://wa.me/5491130741817" class="btn btn-whatsapp" target="_blank">
+        🟢 WHATSAPP
+    </a>
+    
+    <!-- Texto de advertencia debajo de WhatsApp -->
+    <div class="aviso-contacto">
+        SOLO MENSAJES<br>
+        EMERGENCIAS LLAMADAS
+    </div>
+
+    <!-- 2. Botón de TikTok -->
+    <a href="https://vt.tiktok.com/ZSusBGCUb/" class="btn btn-tiktok" target="_blank">
+        📱 TIKTOK
+    </a>
+
+    <br>
+
+    <!-- 3. Botón de Instagram debajo de todo -->
+    <a href="https://www.instagram.com/reel/DWJm-lok1nt/?igsh=NHh1bGkycnRiZHU2" class="btn btn-instagram" target="_blank">
+        📸 INSTAGRAM
+    </a>
+    
+    <p class="footer-text">Presione un botón para ver trabajos o contactar</p>
+</div>
+
+<script>
+    const canvas = document.getElementById('canvasCasa');
+    const ctx = canvas.getContext('2d');
+
+    function dibujarCasaGrande() {
+        // --- 1. TECHO ---
+        ctx.beginPath();
+        ctx.moveTo(350, 20);   
+        ctx.lineTo(680, 250);  
+        ctx.lineTo(20, 250);   
+        ctx.closePath();
+        ctx.fillStyle = '#222222'; 
+        ctx.fill();
+
+        // --- 2. PAREDES ---
+        ctx.fillStyle = '#FFFFFF';
+        ctx.strokeStyle = '#222222';
+        ctx.lineWidth = 10;
+        ctx.fillRect(60, 250, 580, 550); 
+        ctx.strokeRect(60, 250, 580, 550);
+
+        // --- 3. TEXTO INTERNO ---
+        ctx.textAlign = 'center';
+
+        ctx.fillStyle = '#b03a2e'; 
+        ctx.font = 'bold 50px Arial';
+        ctx.fillText('OSCAR SOTO', 350, 330);
+
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 38px Arial';
+        ctx.fillText('CONTRATISTA', 350, 385);
+
+        ctx.fillStyle = '#666';
+        ctx.font = 'italic 28px Arial';
+        ctx.fillText('30 Años de Excelencia', 350, 440);
+
+        ctx.beginPath();
+        ctx.moveTo(150, 470);
+        ctx.lineTo(550, 470);
+        ctx.strokeStyle = '#cccccc';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.fillStyle = '#000';
+        ctx.font = 'bold 32px Arial';
+        ctx.fillText('TRABAJOS:', 350, 520);
+
+        const servicios = [
+            '🔨 Albañilería',
+            '🎨 Pintura',
+            '⚡ Electricidad',
+            '🔥 Gasista',
+            '🏠 Techista'
+        ];
+
+        ctx.font = '30px Arial';
+        let yPos = 575;
+        servicios.forEach(s => {
+            ctx.fillText(s, 350, yPos);
+            yPos += 45;
+        });
+    }
+
+    window.onload = dibujarCasaGrande;
+</script>
+
+</body>
+</html>
